@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screen2.dart';
+import 'package:flutter_application_3/setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,7 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ListTile(
             leading: Icon(Icons.settings_accessibility_rounded),
             title: Text("Setting"),
-            onTap: () {/*Navigator.of(context).pop()*/},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Setting()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app_rounded),
