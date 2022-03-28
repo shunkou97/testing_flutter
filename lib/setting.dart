@@ -21,6 +21,7 @@ class _SettingState extends State<Setting> {
             ListTile(
               title: Text("Language"),
               onTap: () {
+                // cho ra ngoai
                 DropdownButton<String>(
                   value: dropdownValue,
                   onChanged: (String? newValue) {

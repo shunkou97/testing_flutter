@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screen2.dart';
 import 'package:flutter_application_3/setting.dart';
+import 'package:flutter_application_3/tab2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    tab2(),
+    Text(
+      'Index 1: Business',
+    ),
+    Text(
+      'Index 2: School',
+    ),
+  ];
 
   void _incrementCounter() {
     setState(() {
@@ -68,6 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Container(
+              width: 400,
+              height: 300,
+              child: _widgetOptions.elementAt(_selectedIndex),
+            )
           ],
         ),
       ),
