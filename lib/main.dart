@@ -75,14 +75,22 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Image.asset('assets/images/Melissa_Kinrenka.jpg',
-                fit: BoxFit.fill),
-            // decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //         image: AssetImage('assets\images\Melissa_Kinrenka.jpg'),
-            //         fit: BoxFit.fill)),
+          Container(
+            width: 250,
+            height: 250,
+            child: DrawerHeader(
+              //   child: Image.asset('assets/images/Melissa_Kinrenka.jpg',
+              //       fit: BoxFit.fill),
+              child: Text(''),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/Melissa_Kinrenka.png',
+                      ),
+                      fit: BoxFit.fill)),
+            ),
           ),
+          // child: const Image(image: AssetImage('assets\Melissa_Kinrenka.png'))),
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Home"),
