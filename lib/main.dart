@@ -31,10 +31,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _selectedIndex = 0;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+    });
+  }
+
+  void _changeIndex(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
@@ -69,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Image.asset('assets\images\Melissa_Kinrenka.jpg',
+            child: Image.asset('assets/images/Melissa_Kinrenka.jpg',
                 fit: BoxFit.fill),
             // decoration: BoxDecoration(
             //     image: DecorationImage(
@@ -116,7 +123,17 @@ class _MyHomePageState extends State<MyHomePage> {
             print(_counter);
           });
         },
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.contact_mail), label: 'Mail'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _changeIndex,
+      ),
     );
   }
 }
