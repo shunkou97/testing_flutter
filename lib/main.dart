@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/login_screen.dart';
 import 'package:flutter_application_3/screen2.dart';
 import 'package:flutter_application_3/setting.dart';
+import 'package:flutter_application_3/sign_up_screen.dart';
 import 'package:flutter_application_3/tab2.dart';
 
 void main() {
@@ -71,6 +73,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialPageRoute(builder: (context) => Screen2()));
                 }),
                 child: Text("Change Screen")),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: ElevatedButton(
+                  child: Text('Log In'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  }),
+            ),
+            Padding(
+              padding: EdgeInsets.all(15),
+              child: ElevatedButton(
+                child: Text('Sign Up'),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                },
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -161,34 +182,37 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// class Example extends StatefulWidget {
-//   @override
-//   State<Example> createState() => _ExampleState();
-// }
-
-// class _ExampleState extends State<Example> {
+// class _MyHomePageState extends State<MyHomePage> {
 //   @override
 //   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           leading: IconButton(
-//             icon: Icon(Icons.menu),
-//             tooltip: "Navigation Menu",
-//             onPressed: () {
-//               _NavContext(context);
-//             },
-//           ),
-//           title: Text("Example"),
-//         ),
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Welcome Page'),
+//       ),
+//       body: Center(
+//         child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               ElevatedButton(
+//                   child: Text('Log In'),
+//                   onPressed: () {
+//                     Navigator.push(context,
+//                         MaterialPageRoute(builder: (context) => LoginScreen()));
+//                   }),
+//               Padding(
+//                 padding: EdgeInsets.all(15),
+//                 child: ElevatedButton(
+//                   child: Text('Sign Up'),
+//                   onPressed: () {
+//                     Navigator.push(
+//                         context,
+//                         MaterialPageRoute(
+//                             builder: (context) => SignUpScreen()));
+//                   },
+//                 ),
+//               )
+//             ]),
 //       ),
 //     );
-//     throw UnimplementedError();
-//   }
-
-//   void _NavContext(BuildContext context) {
-//     Navigator.push(
-//         context, MaterialPageRoute(builder: (context) => RadioMenu()));
 //   }
 // }
-

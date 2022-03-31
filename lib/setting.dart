@@ -18,24 +18,18 @@ class _SettingState extends State<Setting> {
       body: Container(
         child: Column(
           children: [
-            ListTile(
-              title: Text("Language"),
-              onTap: () {
-                // cho ra ngoai
-                DropdownButton<String>(
-                  value: dropdownValue,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      dropdownValue = newValue!;
-                    });
-                  },
-                  items: <String>['English', 'French', 'German', 'Vietnamese']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                        value: value, child: Text(value));
-                  }).toList(),
-                );
+            DropdownButton<String>(
+              value: dropdownValue,
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                });
               },
+              items: <String>['English', 'French', 'German', 'Vietnamese']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                    value: value, child: Text('Language'));
+              }).toList(),
             )
           ],
         ),
