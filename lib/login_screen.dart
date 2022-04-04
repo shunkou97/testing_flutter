@@ -12,6 +12,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
+  TextEditingController _nameController = TextEditingController();
+  var _nameError;
+  TextEditingController _passwordController = TextEditingController();
+  var _passwordError;
+
+  var _formKey = GlobalKey<FormState>();
 
   void _toggle() {
     setState(() {
@@ -33,24 +39,32 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: EdgeInsets.all(15),
             child: TextField(
-                decoration: InputDecoration(
-              labelText: 'User Name',
-              hintText: "Enter your User Name",
-            )),
+              controller: _nameController,
+              decoration: InputDecoration(
+                labelText: 'User Name',
+                hintText: "Enter your User Name",
+                errorText: _nameError,
+                border: OutlineInputBorder(),
+              ),
+              maxLength: 30,
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(15),
             child: TextField(
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your Password',
-                    suffixIcon: GestureDetector(
-                      onTap: _toggle,
-                      child: Icon(_obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off),
-                    ))),
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                  labelText: 'Password',
+                  hintText: 'Enter your Password',
+                  errorText: _passwordError,
+                  border: OutlineInputBorder(),
+                  suffixIcon: GestureDetector(
+                    onTap: _toggle,
+                    child: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off),
+                  )),
+              maxLength: 30,
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(10),
@@ -77,8 +91,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Color.fromARGB(244, 27, 30, 209)),
                 ),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                  if (_nameController.text.length < 5)
+                    _nameError = "Please enter more than 5 characters";
+                  else if (_passwordController.text.length < 5)
+                    _passwordError = "Please enter more than 5 characters";
+                  else
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignUpScreen()));
                 },
               )
             ],

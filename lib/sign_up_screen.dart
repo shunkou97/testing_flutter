@@ -10,6 +10,14 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool _obscureText = true;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,18 +32,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Padding(
             padding: EdgeInsets.all(15),
             child: TextField(
-                decoration: InputDecoration(
-              labelText: 'User Mame',
-              hintText: "Enter your User Name",
-            )),
+              decoration: InputDecoration(
+                labelText: 'User Mame',
+                hintText: "Enter your User Name",
+                border: OutlineInputBorder(),
+              ),
+              maxLength: 30,
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(15),
             child: TextField(
               decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your Password',
-              ),
+                  labelText: 'Password',
+                  hintText: 'Enter your Password',
+                  border: OutlineInputBorder(),
+                  suffixIcon: GestureDetector(
+                    onTap: _toggle,
+                    child: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off),
+                  )),
+              maxLength: 30,
             ),
           ),
           Padding(
